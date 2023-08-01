@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
       }
     );
     res.status(200).json(categoryData);
-  } catch {
+  } catch (err) {
     res.status(500).json(err)
   }
 });
@@ -65,16 +65,13 @@ router.delete('/:id', async (req, res) => {
   try {
     const categoryData = await Category.destroy(
       {
-        category_name: req.body.category_name
-      },
-      {
         where: {
           id: req.params.id
         }
       }
     );
     res.status(200).json(categoryData);
-  } catch {
+  } catch (err) {
     res.status(500).json(err)
   }
 });
